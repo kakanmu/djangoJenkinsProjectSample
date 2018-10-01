@@ -73,15 +73,19 @@ WSGI_APPLICATION = 'DjangoJenkinsProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+DB_NAME = 'djangoJenkins' if os.environ['DJANGO_DB_NAME'] is None else os.environ['DJANGO_DB_NAME']
+DB_USERNAME = 'dev' if os.environ['DJANGO_DB_USERNAME'] is None else os.environ['DJANGO_DB_USERNAME']
+DB_PASSWORD = 'shalom' if os.environ['DJANGO_DB_PASSWORD'] is None else os.environ['DJANGO_DB_PASSWORD']
+DB_HOST = 'localhost' if os.environ['DJANGO_DB_HOST'] is None else os.environ['DJANGO_DB_HOST']
+DB_PORT = '5432' if os.environ['DJANGO_DB_PORT'] is None else os.environ['DJANGO_DB_PORT']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangoJenkins',
-        'USER':'dev',
-        'PASSWORD':'shalom',
-        'HOST':'localhost',
-        'PORT':'5432',
+        'NAME': DB_NAME,
+        'USER':DB_USERNAME,
+        'PASSWORD':DB_PASSWORD,
+        'HOST':DB_HOST,
+        'PORT':DB_PORT,
     }
 }
 
